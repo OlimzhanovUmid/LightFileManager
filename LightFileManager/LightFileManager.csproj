@@ -51,12 +51,6 @@
     <Compile Include="Core\Drives.cs" />
     <Compile Include="Core\FileManager.cs" />
     <Compile Include="Core\IFormData.cs" />
-    <Compile Include="Forms\SearchDialogBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SearchDialogBox.Designer.cs">
-      <DependentUpon>SearchDialogBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Core\Searcher.cs" />
     <Compile Include="Forms\DialogBox.cs">
       <SubType>Form</SubType>
@@ -70,11 +64,23 @@
     <Compile Include="Forms\DirectoryInfoDialogBox.Designer.cs">
       <DependentUpon>DirectoryInfoDialogBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FileInfoDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FileInfoDialogBox.Designer.cs">
+      <DependentUpon>FileInfoDialogBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchDialogBox.Designer.cs">
+      <DependentUpon>SearchDialogBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Images.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DirectoryInfoDialogBox.resx">
       <DependentUpon>DirectoryInfoDialogBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FileInfoDialogBox.resx">
+      <DependentUpon>FileInfoDialogBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -107,6 +116,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +138,7 @@
     <Content Include="Resources\addFolder.png" />
     <Content Include="Resources\arrowUp.png" />
     <Content Include="Resources\copy.png" />
+    <None Include="Resources\copy1.png" />
     <Content Include="Resources\cut.png" />
     <Content Include="Resources\delete.png" />
     <Content Include="Resources\details.png" />
@@ -139,6 +150,7 @@
     <Content Include="Resources\paste.png" />
     <Content Include="Resources\refresh.png" />
     <Content Include="Resources\search.png" />
+    <None Include="Resources\search1.png" />
     <Content Include="Resources\view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

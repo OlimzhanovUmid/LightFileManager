@@ -27,7 +27,7 @@ namespace LightFileManager.Forms
                 ishiddenchbx.CheckState = CheckState.Checked;
 
             if (_dirInfo.Attributes.HasFlag(FileAttributes.ReadOnly))
-                onlyredingchbx.CheckState = CheckState.Checked;
+                onlyreadingchbx.CheckState = CheckState.Checked;
         }
 
         public async void CountSize()
@@ -41,12 +41,12 @@ namespace LightFileManager.Forms
 
         private void okbtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

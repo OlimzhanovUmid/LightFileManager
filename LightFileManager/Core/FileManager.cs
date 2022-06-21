@@ -13,7 +13,6 @@ namespace LightFileManager.Core
         public Drives Drives { get; set; }
 
         public string Path { get; set; }
-        public string RightPath { get; set; }
 
         public DirectoryInfo ViewDirectory { get; set; }
 
@@ -29,7 +28,7 @@ namespace LightFileManager.Core
         {
             _buffer = new Buffer();
             Drives = new Drives();
-            Path = RightPath = Drives.Disks[0].Name;
+            Path = Drives.Disks[0].Name;
             Directory.SetCurrentDirectory(Path);
 
             _viewListView = view;
@@ -110,7 +109,7 @@ namespace LightFileManager.Core
             var tmp = sender as ListView;
             try
             {
-                switch ((string)tmp?.FocusedItem.Tag)
+                switch ((string)tmp.FocusedItem.Tag)
                 {
                     case "File":
                         Process.Start(tmp.FocusedItem.Text);
