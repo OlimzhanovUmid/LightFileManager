@@ -8,6 +8,7 @@ using LightFileManager.Core;
 
 namespace LightFileManager
 {
+
     public partial class MainForm : Form, IFormData
     {
         private FileManager _fileManager;

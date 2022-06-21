@@ -61,6 +61,10 @@
             this.List1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Details1 = new System.Windows.Forms.ToolStripMenuItem();
             this.LargeIcons1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.maincontainer)).BeginInit();
             this.maincontainer.Panel1.SuspendLayout();
             this.maincontainer.Panel2.SuspendLayout();
@@ -130,13 +134,15 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(699, 450);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(699, 450);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";;
             // 
             // menumnstrp
             // 
@@ -241,6 +247,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.BackColor = System.Drawing.Color.Silver;
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
@@ -397,6 +408,22 @@
             this.LargeIcons1.Text = "Крупные значки";
             this.LargeIcons1.Click += new System.EventHandler(this.ChangeViewMode);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Имя";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Тип";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Размер";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Дата создания";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +488,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 
