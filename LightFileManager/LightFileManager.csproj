@@ -52,7 +52,18 @@
     <Compile Include="Core\FileManager.cs" />
     <Compile Include="Core\IFormData.cs" />
     <Compile Include="Core\Searcher.cs" />
-    <Compile Include="Core\Section.cs" />
+    <Compile Include="Forms\DialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogBox.Designer.cs">
+      <DependentUpon>DialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DirectoryInfoDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DirectoryInfoDialogBox.Designer.cs">
+      <DependentUpon>DirectoryInfoDialogBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +77,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\DialogBox.resx">
+      <DependentUpon>DialogBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DirectoryInfoDialogBox.resx">
+      <DependentUpon>DirectoryInfoDialogBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

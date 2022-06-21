@@ -11,59 +11,48 @@ namespace LightFileManager.Core
     public class FileManager
     {
         public Drives Drives { get; set; }
-        public Section Section { get; set; }
 
-        public string LeftPath { get; set; }
+        public string Path { get; set; }
         public string RightPath { get; set; }
 
-        public DirectoryInfo LeftDirectory { get; set; }
-        public DirectoryInfo RightDirectory { get; set; }
+        public DirectoryInfo ViewDirectory { get; set; }
 
-        private ListView _leftListView;
-        private ListView _rightListView;
-
+        private ListView _viewListView;
         // icons
-        private List<ImageList> _leftImagelist;
-        private List<ImageList> _rightImagelist;
+        private List<ImageList> _viewImagelist;
 
         private Buffer _buffer;
 
-        public FileManager(ListView left,          ListView right, 
-                           ImageList leftImg,      ImageList rightImg, 
-                           ImageList leftImgLarge, ImageList rightImgLarge)
+        public FileManager(ListView view, 
+                           ImageList viewImg, 
+                           ImageList viewImgLarge)
         {
             _buffer = new Buffer();
             Drives = new Drives();
-            LeftPath = RightPath = Drives.Disks[0].Name;
-            Section = Section.Left;
-            Directory.SetCurrentDirectory(LeftPath);
+            Path = RightPath = Drives.Disks[0].Name;
+            Directory.SetCurrentDirectory(Path);
 
-            _leftListView = left;
-            _rightListView = right;
+            _viewListView = view;
 
             //---------------------------------------------
-            _leftImagelist = new List<ImageList>(2);
-            _rightImagelist = new List<ImageList>(2);
+            _viewImagelist = new List<ImageList>(2)
+            {
+                viewImg,
+                viewImgLarge
+            };
 
-            _leftImagelist.Add(leftImg);
-            _leftImagelist.Add(leftImgLarge);
-
-            _rightImagelist.Add(rightImg);
-            _rightImagelist.Add(rightImgLarge);
             //---------------------------------------------
 
-            LeftDirectory = new DirectoryInfo(LeftPath);
-            RightDirectory = new DirectoryInfo(RightPath);
+            ViewDirectory = new DirectoryInfo(Path);
 
-            SetUpListView(Section.Left);
-            SetUpListView(Section.Right);
-        }
+            SetUpListView();
+            }
 
-        public void SetUpListView(Section s)
+        public void SetUpListView()
         {
-            var imgList   = s == Section.Left ? _leftImagelist : _rightImagelist;
-            var listView  = s == Section.Left ? _leftListView  : _rightListView;
-            var directory = s == Section.Left ? LeftDirectory  : RightDirectory;
+            var imgList   = _viewImagelist;
+            var listView  = _viewListView;
+            var directory = ViewDirectory;
 
             imgList[0].Images.Clear();
             imgList[1].Images.Clear();
@@ -99,8 +88,8 @@ namespace LightFileManager.Core
             // Files
             foreach (var file in directory.GetFiles())
             {
-                imgList[0].Images.Add(Icon.ExtractAssociatedIcon(file.FullName).ToBitmap());
-                imgList[1].Images.Add(Icon.ExtractAssociatedIcon(file.FullName).ToBitmap());
+                imgList[0].Images.Add(Icon.ExtractAssociatedIcon(file.FullName)?.ToBitmap() ?? throw new InvalidOperationException());
+                imgList[1].Images.Add(Icon.ExtractAssociatedIcon(file.FullName)?.ToBitmap() ?? throw new InvalidOperationException());
 
                 listView.Items.Add(file.Name, index++);
                 listView.Items[i].Tag = "File";
@@ -112,7 +101,7 @@ namespace LightFileManager.Core
 
         public void ChangeViewMode(string mode)
         {
-            var tmp = Section == Section.Left ? _leftListView : _rightListView;
+            var tmp = _viewListView;
             tmp.View = (View)Enum.Parse(typeof(View), mode);
         }
 
@@ -121,13 +110,14 @@ namespace LightFileManager.Core
             var tmp = sender as ListView;
             try
             {
-                if ((string)tmp.FocusedItem.Tag == "File")
+                switch ((string)tmp?.FocusedItem.Tag)
                 {
-                    Process.Start(tmp.FocusedItem.Text);
-                }
-                else if ((string)tmp.FocusedItem.Tag == "Folder")
-                {
-                    ChangeDirectory(tmp.FocusedItem.Text, Section);
+                    case "File":
+                        Process.Start(tmp.FocusedItem.Text);
+                        break;
+                    case "Folder":
+                        ChangeDirectory(tmp.FocusedItem.Text);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -136,18 +126,17 @@ namespace LightFileManager.Core
             }
         }
 
-        public void ChangeDirectory(string newPath, Section s)
+        public void ChangeDirectory(string newPath)
         {
             var tmp = new DirectoryInfo(newPath);
             tmp.GetFiles();
             
-            if (s == Section.Left)
-                LeftDirectory = tmp;
-            else
-                RightDirectory = tmp;
+
+                ViewDirectory = tmp;
+            
 
             Directory.SetCurrentDirectory(newPath);
-            SetUpListView(s);
+            SetUpListView();
         }
 
         public void CreateFolder(string name)
@@ -173,8 +162,7 @@ namespace LightFileManager.Core
         
         public void DeleteFiles()
         {
-            var listView = Section == Section.Left ? _leftListView : _rightListView;
-            bool samePath = RightDirectory.FullName == LeftDirectory.FullName;
+            var listView = _viewListView;
 
             int index;
             foreach (ListViewItem item in listView.SelectedItems)
@@ -186,21 +174,15 @@ namespace LightFileManager.Core
                 else if ((item.Tag as string) == "File")
                     File.Delete(item.Text);
 
-                if (samePath)
-                {
-                    index = _leftListView.Items.IndexOf(item);
-                    _leftListView.Items.RemoveAt(index);
-                    _rightListView.Items.RemoveAt(index);
-                }
-                else
-                    listView.Items.Remove(item);
+                index = _viewListView.Items.IndexOf(item);
+                _viewListView.Items.RemoveAt(index);
             }
         }
 
         public object GetSelectedItem()
         {
-            var listView = Section == Section.Left ? _leftListView : _rightListView;
-            var sourcePath = Section == Section.Left ? LeftDirectory.FullName : RightDirectory.FullName;
+            var listView = _viewListView;
+            var sourcePath = ViewDirectory.FullName;
 
             if (listView.SelectedItems.Count == 0)
                 return null;
@@ -216,13 +198,13 @@ namespace LightFileManager.Core
 
         public string[] GetSelectedItemsPath()
         {
-            var listView = Section == Section.Left ? _leftListView : _rightListView;
-            var sourcePath = Section == Section.Left ? LeftDirectory.FullName : RightDirectory.FullName;
+            var listView = _viewListView;
+            var sourcePath = ViewDirectory.FullName;
             var path = new List<string>();
 
             foreach (ListViewItem item in listView.SelectedItems)
             {
-                if (item.Text == "..")
+                if (item.Text == @"..")
                     continue;
                 path.Add(sourcePath + "\\" + item.Text);
             }
@@ -236,10 +218,9 @@ namespace LightFileManager.Core
             SetFilesToBuffer();
         }
 
-        public void PasteFiles(Section s)
+        public void PasteFiles()
         {
-            var listView = s == Section.Left ? _leftListView : _rightListView;
-            var sourcePath = s == Section.Left ? LeftDirectory.FullName : RightDirectory.FullName;
+            var sourcePath = ViewDirectory.FullName;
 
             string dir = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(sourcePath);
@@ -248,7 +229,7 @@ namespace LightFileManager.Core
             {
                 foreach (var item in _buffer.GetFiles())
                 {
-                    try { File.Copy(item, Path.GetFileName(item)); }
+                    try { File.Copy(item, System.IO.Path.GetFileName(item)); }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }
 
@@ -263,13 +244,13 @@ namespace LightFileManager.Core
             {
                 foreach (var item in _buffer.GetFiles())
                 {
-                    try { File.Move(item, Path.GetFileName(item)); }
+                    try { File.Move(item, System.IO.Path.GetFileName(item)); }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }
 
                 foreach (var item in _buffer.GetFolders())
                 {
-                    try { Directory.Move(item, Path.GetFileName(item)); }
+                    try { Directory.Move(item, System.IO.Path.GetFileName(item)); }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }
             }
@@ -299,8 +280,8 @@ namespace LightFileManager.Core
         private void SetFilesToBuffer()
         {
             _buffer.Clear();
-            var listView = Section == Section.Left ? _leftListView : _rightListView;
-            var sourcePath = Section == Section.Left ? LeftDirectory.FullName : RightDirectory.FullName;
+            var listView =  _viewListView;
+            var sourcePath = ViewDirectory.FullName;
 
             foreach (ListViewItem item in listView.SelectedItems)
             {
@@ -336,7 +317,10 @@ namespace LightFileManager.Core
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

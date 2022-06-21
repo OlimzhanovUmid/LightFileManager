@@ -19,13 +19,11 @@ namespace LightFileManager
         {
             InitializeComponent();
             //create root
-            var drives = _fileManager.Drives.Disks.ToArray();
-            for (int i = 0; i < drives.Length; i++)
-            {
+            
                 var root = new TreeNode() {Text = "C:", Tag = "c:\\"};
                 tvFiles.Nodes.Add(root);
                 Build(root);
-            }
+            
         }
         private void Build(TreeNode parent)
         {
