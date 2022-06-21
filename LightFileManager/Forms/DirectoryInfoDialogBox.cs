@@ -8,7 +8,7 @@ namespace LightFileManager.Forms
 {
     public partial class DirectoryInfoDialogBox : Form
     {
-        public string FileName { get => textBox1.Text; }
+        public string FileName { get => dirnametbx.Text; }
         private DirectoryInfo _dirInfo;
         private Counter _counter;
 
@@ -19,15 +19,15 @@ namespace LightFileManager.Forms
             _counter = new Counter();
 
             CountSize();
-            textBox1.Text = _dirInfo.Name;
+            dirnametbx.Text = _dirInfo.Name;
             locationLabel.Text = Path.GetDirectoryName(_dirInfo.FullName);
             createdLabel.Text = _dirInfo.CreationTime.ToLongDateString();
 
             if (_dirInfo.Attributes.HasFlag(FileAttributes.Hidden))
-                checkBox1.CheckState = CheckState.Checked;
+                ishiddenchbx.CheckState = CheckState.Checked;
 
             if (_dirInfo.Attributes.HasFlag(FileAttributes.ReadOnly))
-                checkBox2.CheckState = CheckState.Checked;
+                onlyredingchbx.CheckState = CheckState.Checked;
         }
 
         public async void CountSize()

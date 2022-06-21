@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LightFileManager.Core;
+using LightFileManager.Forms;
 
 namespace LightFileManager
 {
     public partial class MainForm : Form
     {
         private FileManager _fileManager;
+        private DialogBox _dlgBox;
+        private DirectoryInfoDialogBox _dirInfoDlgBox;
         public MainForm()
         {
             InitializeComponent();
