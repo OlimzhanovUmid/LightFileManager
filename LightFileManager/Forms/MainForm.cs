@@ -34,6 +34,11 @@ namespace LightFileManager
             comboBox1.SelectedIndex = 0;
 
             comboBox1.SelectedIndexChanged += ComboBox1SelectedValueChanged;
+            
+            var root = new TreeNode() { Text = "C:", Tag = "c:\\" };
+            tvFiles.Nodes.Add(root);
+            Build(root);
+            root.Expand();
             UpdateLabels();
 
 
@@ -124,12 +129,10 @@ namespace LightFileManager
         {
             _fileManager.CopyFiles();
         }
-
         private void CutFiles(object sender, EventArgs e)
         {
             _fileManager.CutFiles();
         }
-
         private void PasteFiles(object sender, EventArgs e)
         {
             _fileManager.PasteFiles();
@@ -148,12 +151,10 @@ namespace LightFileManager
                 MessageBox.Show(ex.Message);
             }
         }
-
         public void ChangeDirectory(string newPath)
         {
             _fileManager.ChangeDirectory(newPath);
         }
-
         private void InfoDialogBox(object sender, EventArgs e)
         {
             var tmp = _fileManager.GetSelectedItem();
@@ -180,18 +181,14 @@ namespace LightFileManager
             var path = _fileManager.GetSelectedItemsPath();
             (sender as ListView).DoDragDrop(path, DragDropEffects.Copy);
         }
-
-
         private void ViewGotFocus(object sender, EventArgs e)
         {
             Directory.SetCurrentDirectory(_fileManager.ViewDirectory.FullName);
         }
-
         private void DragEnterEvent(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
         }
-
         private void DragDropEvent(object sender, DragEventArgs e)
         {
             string[] path;
@@ -226,20 +223,17 @@ namespace LightFileManager
             try
             {
                 //create dirs
-                if (path != null)
+                foreach (var dir in Directory.GetDirectories(path))
                 {
-                    foreach (var dir in Directory.GetDirectories(path))
-                    {
-                        var node = new TreeNode(Path.GetFileName(dir), new[] {new TreeNode("...")}) {Tag = dir};
-                        parent.Nodes.Add(node);
-                    }
+                    var node = new TreeNode(Path.GetFileName(dir), new[] { new TreeNode("...") }) { Tag = dir };
+                    parent.Nodes.Add(node);
+                }
 
-                    //create files
-                    foreach (var file in Directory.GetFiles(path))
-                    {
-                        var node = new TreeNode(Path.GetFileName(file), 1, 1) {Tag = file};
-                        parent.Nodes.Add(node);
-                    }
+                //create files
+                foreach (var file in Directory.GetFiles(path))
+                {
+                    var node = new TreeNode(Path.GetFileName(file), 1, 1) { Tag = file };
+                    parent.Nodes.Add(node);
                 }
             }
             catch
