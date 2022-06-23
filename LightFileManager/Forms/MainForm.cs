@@ -245,6 +245,7 @@ namespace LightFileManager
                 //oops, no access...
             }
         }
+
         private void tvFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
 
@@ -252,6 +253,33 @@ namespace LightFileManager
             dirpathtbx.Text = e.Node.Tag as string;
             ChangeDirectory(dirpathtbx.Text);
         }
-        
+
+        private void Addtabpage_Click(object sender, EventArgs e)
+        {
+            TabPage tabPage = new TabPage();
+            foreach (Control control in tabstbctrl.SelectedTab.Controls)
+            {
+                tabPage.Controls.Add(control);
+            }
+            tabstbctrl.TabPages.Add(tabPage);
+            tabstbctrl.SelectedIndex += 1;
+        }
+
+        private void Deletetabpage_Click(object sender, EventArgs e)
+        {
+            Control[] controls = new Control[tabstbctrl.SelectedTab.Controls.Count];
+            foreach (Control control in tabstbctrl.SelectedTab.Controls)
+            {
+                controls[0] = control;
+            }
+            int selectedTab = tabstbctrl.SelectedIndex-1;
+            tabstbctrl.TabPages.Remove(tabstbctrl.SelectedTab);
+            tabstbctrl.TabPages[selectedTab].Controls.AddRange(controls);
+            tabstbctrl.SelectedIndex = selectedTab;
+        }
+
+        private void tabstbctrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
