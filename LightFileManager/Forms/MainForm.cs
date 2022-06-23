@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using LightFileManager.Forms;
 using System.IO;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 using LightFileManager.Core;
 
@@ -21,41 +22,44 @@ namespace LightFileManager
             InitializeComponent();
             _dlgBox = new DialogBox("Введите имя", "Отмена", "Ок");
 
-            listView1.GotFocus += ViewGotFocus;
+            dirView.GotFocus += ViewGotFocus;
 
-            listView1.ItemActivate += ListViewDoubleClick;
+            dirView.ItemActivate += ListViewDoubleClick;
 
-            _fileManager = new FileManager(listView1, imageList1, imageList2);
+            _fileManager = new FileManager(dirView, imageList1, imageList2);
 
-            textBox1.Text = _fileManager.ViewDirectory.FullName;
+            dirpathtbx.Text = _fileManager.ViewDirectory.FullName;
 
-            comboBox1.Items.AddRange(_fileManager.Drives.Disks.ToArray());
+            diskscmbx.Items.AddRange(_fileManager.Drives.Disks.ToArray());
 
-            comboBox1.SelectedIndex = 0;
+            diskscmbx.SelectedIndex = 0;
 
-            comboBox1.SelectedIndexChanged += ComboBox1SelectedValueChanged;
-            
-            var root = new TreeNode() { Text = "C:", Tag = "c:\\" };
-            tvFiles.Nodes.Add(root);
-            Build(root);
-            root.Expand();
+            diskscmbx.SelectedIndexChanged += DiskscmbxSelectedValueChanged;
+            for (int i = 0; i < diskscmbx.Items.Count; i++)
+            {
+                var root = new TreeNode() {Text = diskscmbx.Items[i].ToString(), Tag = diskscmbx.Items[i].ToString() };
+                tvFiles.Nodes.Add(root);
+                Build(root);
+            }
             UpdateLabels();
+
 
 
         }
 
         private void UpdateLabels()
         {
-            textBox1.Text = _fileManager.ViewDirectory.FullName;
+            dirpathtbx.Text = _fileManager.ViewDirectory.FullName;
 
-            label1.Text = $"{_fileManager.Drives.Disks[comboBox1.SelectedIndex].AvailableFreeSpace / Math.Pow(1024, 3): 0.00} ГБ / " +
-                          $"{_fileManager.Drives.Disks[comboBox1.SelectedIndex].TotalSize / Math.Pow(1024, 3): 0.00} ГБ";
+            disksizelb.Text = $"{_fileManager.Drives.Disks[diskscmbx.SelectedIndex].AvailableFreeSpace / Math.Pow(1024, 3): 0.00} ГБ / " +
+                          $"{_fileManager.Drives.Disks[diskscmbx.SelectedIndex].TotalSize / Math.Pow(1024, 3): 0.00} ГБ";
         }
         private void ListViewDoubleClick(object sender, EventArgs e)
         {
             _fileManager.ItemDoubleClick(sender);
             UpdateLabels();
         }
+
         private void ChangeViewMode(object sender, EventArgs e)
         {
             _fileManager.ChangeViewMode(((sender as ToolStripMenuItem).Tag as string));
@@ -68,11 +72,11 @@ namespace LightFileManager
         {
             _fileManager.SetUpListView();
         }
-        private void ComboBox1SelectedValueChanged(object sender, EventArgs e)
+        private void DiskscmbxSelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-                _fileManager.ChangeDirectory(_fileManager.Drives.Disks[comboBox1.SelectedIndex].Name);
+                _fileManager.ChangeDirectory(_fileManager.Drives.Disks[diskscmbx.SelectedIndex].Name);
                 UpdateLabels();
             }
             catch (Exception ex)
@@ -229,17 +233,25 @@ namespace LightFileManager
                     parent.Nodes.Add(node);
                 }
 
-                //create files
-                foreach (var file in Directory.GetFiles(path))
-                {
-                    var node = new TreeNode(Path.GetFileName(file), 1, 1) { Tag = file };
-                    parent.Nodes.Add(node);
-                }
+                ////create files
+                //foreach (var file in Directory.GetFiles(path))
+                //{
+                //    var node = new TreeNode(Path.GetFileName(file), 1, 1) { Tag = file };
+                //    parent.Nodes.Add(node);
+                //}
             }
             catch
             {
                 //oops, no access...
             }
         }
+        private void tvFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+            Build(e.Node);
+            dirpathtbx.Text = e.Node.Tag as string;
+            ChangeDirectory(dirpathtbx.Text);
+        }
+        
     }
 }

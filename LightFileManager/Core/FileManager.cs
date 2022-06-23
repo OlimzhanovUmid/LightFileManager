@@ -107,35 +107,45 @@ namespace LightFileManager.Core
         public void ItemDoubleClick(object sender)
         {
             var tmp = sender as ListView;
+            
+                try
+                {
+                    switch ((string) tmp.FocusedItem.Tag)
+                    {
+                        case "File":
+                            Process.Start(tmp.FocusedItem.Text);
+                            break;
+                        case "Folder":
+                            ChangeDirectory(tmp.FocusedItem.Text);
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            
+        }
+        public void NodeOpenClick(string tag)
+        {
+            Directory.SetCurrentDirectory(tag);
+            SetUpListView();
+        }
+
+        public void ChangeDirectory(string newPath)
+        {
             try
             {
-                switch ((string)tmp.FocusedItem.Tag)
-                {
-                    case "File":
-                        Process.Start(tmp.FocusedItem.Text);
-                        break;
-                    case "Folder":
-                        ChangeDirectory(tmp.FocusedItem.Text);
-                        break;
-                }
+                var tmp = new DirectoryInfo(newPath);
+                tmp.GetFiles();
+                ViewDirectory = tmp;
+                Directory.SetCurrentDirectory(newPath);
+                SetUpListView();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public void ChangeDirectory(string newPath)
-        {
-            var tmp = new DirectoryInfo(newPath);
-            tmp.GetFiles();
-            
-
-                ViewDirectory = tmp;
-            
-
-            Directory.SetCurrentDirectory(newPath);
-            SetUpListView();
         }
 
         public void CreateFolder(string name)
