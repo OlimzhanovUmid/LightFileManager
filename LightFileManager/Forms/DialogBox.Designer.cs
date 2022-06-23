@@ -40,38 +40,44 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dialboxtbx.BackColor = System.Drawing.Color.Silver;
             this.dialboxtbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dialboxtbx.Location = new System.Drawing.Point(12, 12);
+            this.dialboxtbx.Location = new System.Drawing.Point(16, 15);
+            this.dialboxtbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dialboxtbx.Name = "dialboxtbx";
-            this.dialboxtbx.Size = new System.Drawing.Size(238, 20);
+            this.dialboxtbx.Size = new System.Drawing.Size(317, 22);
             this.dialboxtbx.TabIndex = 0;
             // 
             // okbtn
             // 
-            this.okbtn.Location = new System.Drawing.Point(94, 41);
+            this.okbtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okbtn.Location = new System.Drawing.Point(125, 50);
+            this.okbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.okbtn.Name = "okbtn";
-            this.okbtn.Size = new System.Drawing.Size(75, 23);
+            this.okbtn.Size = new System.Drawing.Size(100, 28);
             this.okbtn.TabIndex = 1;
             this.okbtn.Text = "Ок";
             this.okbtn.UseVisualStyleBackColor = true;
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Location = new System.Drawing.Point(175, 41);
+            this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelbtn.Location = new System.Drawing.Point(233, 50);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelbtn.Size = new System.Drawing.Size(100, 28);
             this.cancelbtn.TabIndex = 2;
             this.cancelbtn.Text = "Назад";
             this.cancelbtn.UseVisualStyleBackColor = true;
             // 
             // DialogBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(262, 76);
+            this.ClientSize = new System.Drawing.Size(349, 94);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.okbtn);
             this.Controls.Add(this.dialboxtbx);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DialogBox";
             this.Text = "DialogBox";
             this.ResumeLayout(false);

@@ -19,7 +19,7 @@ namespace LightFileManager
         public MainForm()
         {
             InitializeComponent();
-            _dlgBox = new DialogBox("Введите имя", "Отмена", "Подтвердить");
+            _dlgBox = new DialogBox("Введите имя", "Отмена", "Ок");
 
             listView1.GotFocus += ViewGotFocus;
 

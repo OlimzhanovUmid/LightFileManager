@@ -150,6 +150,7 @@ namespace LightFileManager.Core
 
         public void CreateFile(string name)
         {
+            
             if (name.Length < 1)
                 throw new ArgumentException("Слишком короткое название!");
             else if (File.Exists(name))
