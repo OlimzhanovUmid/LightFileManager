@@ -55,6 +55,7 @@
             this.Addtabpage = new System.Windows.Forms.ToolStripMenuItem();
             this.Deletetabpage = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pagepan = new System.Windows.Forms.Panel();
             this.dirView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,7 +93,6 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList4 = new System.Windows.Forms.ImageList(this.components);
-            this.pagepan = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.maincontainer)).BeginInit();
             this.maincontainer.Panel1.SuspendLayout();
             this.maincontainer.Panel2.SuspendLayout();
@@ -101,10 +101,10 @@
             this.tabstbctrl.SuspendLayout();
             this.tabctrlstrip.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.pagepan.SuspendLayout();
             this.propspan.SuspendLayout();
             this.menumnstrp.SuspendLayout();
             this.maintoolstrip.SuspendLayout();
-            this.pagepan.SuspendLayout();
             this.SuspendLayout();
             // 
             // maincontainer
@@ -313,7 +313,7 @@
             // Deletetabpage
             // 
             this.Deletetabpage.Name = "Deletetabpage";
-            this.Deletetabpage.Size = new System.Drawing.Size(180, 22);
+            this.Deletetabpage.Size = new System.Drawing.Size(172, 22);
             this.Deletetabpage.Text = "Удалить вкладку";
             this.Deletetabpage.Click += new System.EventHandler(this.Deletetabpage_Click);
             // 
@@ -326,6 +326,16 @@
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(699, 450);
             this.tabPage1.TabIndex = 0;
+            // 
+            // pagepan
+            // 
+            this.pagepan.Controls.Add(this.dirView);
+            this.pagepan.Controls.Add(this.propspan);
+            this.pagepan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pagepan.Location = new System.Drawing.Point(0, 0);
+            this.pagepan.Name = "pagepan";
+            this.pagepan.Size = new System.Drawing.Size(699, 450);
+            this.pagepan.TabIndex = 1;
             // 
             // dirView
             // 
@@ -417,8 +427,9 @@
             this.dirpathtbx.Location = new System.Drawing.Point(182, -1);
             this.dirpathtbx.MinimumSize = new System.Drawing.Size(2, 21);
             this.dirpathtbx.Name = "dirpathtbx";
-            this.dirpathtbx.Size = new System.Drawing.Size(515, 21);
+            this.dirpathtbx.Size = new System.Drawing.Size(515, 20);
             this.dirpathtbx.TabIndex = 1;
+            this.dirpathtbx.DoubleClick += new System.EventHandler(this.dirpathtbx_DoubleClick);
             // 
             // menumnstrp
             // 
@@ -664,16 +675,6 @@
             this.imageList4.ImageSize = new System.Drawing.Size(48, 48);
             this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // pagepan
-            // 
-            this.pagepan.Controls.Add(this.dirView);
-            this.pagepan.Controls.Add(this.propspan);
-            this.pagepan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pagepan.Location = new System.Drawing.Point(0, 0);
-            this.pagepan.Name = "pagepan";
-            this.pagepan.Size = new System.Drawing.Size(699, 450);
-            this.pagepan.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -695,13 +696,13 @@
             this.tabstbctrl.ResumeLayout(false);
             this.tabctrlstrip.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.pagepan.ResumeLayout(false);
             this.propspan.ResumeLayout(false);
             this.propspan.PerformLayout();
             this.menumnstrp.ResumeLayout(false);
             this.menumnstrp.PerformLayout();
             this.maintoolstrip.ResumeLayout(false);
             this.maintoolstrip.PerformLayout();
-            this.pagepan.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using LightFileManager.Forms;
@@ -253,15 +254,18 @@ namespace LightFileManager
             dirpathtbx.Text = e.Node.Tag as string;
             ChangeDirectory(dirpathtbx.Text);
         }
-
+        List<string> tabHistory = new List<string>();
         private void Addtabpage_Click(object sender, EventArgs e)
         {
+            tabHistory.Add(dirpathtbx.Text);
             TabPage tabPage = new TabPage();
             foreach (Control control in tabstbctrl.SelectedTab.Controls)
             {
                 tabPage.Controls.Add(control);
             }
             tabstbctrl.TabPages.Add(tabPage);
+            dirpathtbx.Text = "C:\\";
+            ChangeDirectory(dirpathtbx.Text);
             tabstbctrl.SelectedIndex += 1;
         }
 
@@ -275,6 +279,8 @@ namespace LightFileManager
             int selectedTab = tabstbctrl.SelectedIndex-1;
             tabstbctrl.TabPages.Remove(tabstbctrl.SelectedTab);
             tabstbctrl.TabPages[selectedTab].Controls.AddRange(controls);
+            dirpathtbx.Text = tabHistory[selectedTab-1];
+            ChangeDirectory(dirpathtbx.Text);
             tabstbctrl.SelectedIndex = selectedTab;
         }
 
@@ -292,7 +298,13 @@ namespace LightFileManager
                 }
             }
             tabstbctrl.SelectedTab.Controls.AddRange(controls);
-            
+            //dirpathtbx.Text = tabHistory[tabstbctrl.SelectedIndex+1];
+            ChangeDirectory(dirpathtbx.Text);
+        }
+
+        private void dirpathtbx_DoubleClick(object sender, EventArgs e)
+        {
+            ChangeDirectory(dirpathtbx.Text);
         }
     }
 }
