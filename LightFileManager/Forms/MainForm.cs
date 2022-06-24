@@ -43,7 +43,6 @@ namespace LightFileManager
                 Build(root);
             }
             UpdateLabels();
-            tabHistory.Add("");
 
 
 
@@ -260,6 +259,7 @@ namespace LightFileManager
         List<string> tabHistory = new List<string>();
         private void Addtabpage_Click(object sender, EventArgs e)
         {
+            tabHistory.Add(dirpathtbx.Text);
             TabPage tabPage = new TabPage();
             foreach (Control control in tabstbctrl.SelectedTab.Controls)
             {
@@ -267,6 +267,8 @@ namespace LightFileManager
             }
             tabstbctrl.TabPages.Add(tabPage);
             tabstbctrl.SelectedIndex += 1;
+            ChangeDirectory("C:\\");
+            dirpathtbx.Text = @"C:\";
         }
 
         private void Deletetabpage_Click(object sender, EventArgs e)
@@ -280,6 +282,7 @@ namespace LightFileManager
             tabstbctrl.TabPages.Remove(tabstbctrl.SelectedTab);
             tabstbctrl.TabPages[selectedTab].Controls.AddRange(controls);
             tabstbctrl.SelectedIndex = selectedTab;
+            tabHistory.RemoveAt(selectedTab+1);
         }
 
         private void tabstbctrl_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,6 +300,8 @@ namespace LightFileManager
                 }
             }
             tabstbctrl.SelectedTab.Controls.AddRange(controls);
+            ChangeDirectory(tabHistory[tabstbctrl.SelectedIndex]);
+            dirpathtbx.Text = tabHistory[tabstbctrl.SelectedIndex];
         }
 
         private void dirpathtbx_DoubleClick(object sender, EventArgs e)

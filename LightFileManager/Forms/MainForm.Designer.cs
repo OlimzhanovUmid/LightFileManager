@@ -95,6 +95,9 @@
             this.List1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Details1 = new System.Windows.Forms.ToolStripMenuItem();
             this.LargeIcons1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.maincontainer)).BeginInit();
             this.maincontainer.Panel1.SuspendLayout();
             this.maincontainer.Panel2.SuspendLayout();
@@ -161,7 +164,7 @@
             this.toolStripSeparator6,
             this.Info});
             this.maincontextmenu.Name = "contextMenuStrip1";
-            this.maincontextmenu.Size = new System.Drawing.Size(140, 198);
+            this.maincontextmenu.Size = new System.Drawing.Size(190, 198);
             // 
             // toolStripSeparator4
             // 
@@ -371,12 +374,15 @@
             // 
             this.Сommands.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.поискФайлаToolStripMenuItem,
+            this.toolStripSeparator7,
             this.создатьПапкуToolStripMenuItem,
             this.создатьФайлToolStripMenuItem,
-            this.удалитьToolStripMenuItem,
-            this.переместитьToolStripMenuItem,
+            this.toolStripSeparator8,
             this.копироватьToolStripMenuItem,
+            this.переместитьToolStripMenuItem,
             this.переименоватьToolStripMenuItem,
+            this.удалитьToolStripMenuItem,
+            this.toolStripSeparator9,
             this.обновитьToolStripMenuItem});
             this.Сommands.Name = "Сommands";
             this.Сommands.Size = new System.Drawing.Size(70, 20);
@@ -551,7 +557,8 @@
             // 
             this.Refresh.Image = global::LightFileManager.Properties.Resources.icons8_обновить_32;
             this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(139, 22);
+            this.Refresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.Refresh.Size = new System.Drawing.Size(189, 22);
             this.Refresh.Text = "Обновить";
             this.Refresh.Click += new System.EventHandler(this.RefreshFiles);
             // 
@@ -559,7 +566,8 @@
             // 
             this.Delete.Image = global::LightFileManager.Images.icons8_удалить_32;
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(139, 22);
+            this.Delete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.Delete.Size = new System.Drawing.Size(189, 22);
             this.Delete.Text = "Удалить";
             this.Delete.Click += new System.EventHandler(this.DeleteFiles);
             // 
@@ -567,7 +575,8 @@
             // 
             this.Copy.Image = global::LightFileManager.Properties.Resources.icons8_скопировать_32;
             this.Copy.Name = "Copy";
-            this.Copy.Size = new System.Drawing.Size(139, 22);
+            this.Copy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.Copy.Size = new System.Drawing.Size(189, 22);
             this.Copy.Text = "Копировать";
             this.Copy.Click += new System.EventHandler(this.CopyFiles);
             // 
@@ -575,7 +584,8 @@
             // 
             this.Cut.Image = global::LightFileManager.Properties.Resources.icons8_вырезать_32;
             this.Cut.Name = "Cut";
-            this.Cut.Size = new System.Drawing.Size(139, 22);
+            this.Cut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.Cut.Size = new System.Drawing.Size(189, 22);
             this.Cut.Text = "Вырезать";
             this.Cut.Click += new System.EventHandler(this.PasteFiles);
             // 
@@ -583,7 +593,8 @@
             // 
             this.Paste.Image = global::LightFileManager.Properties.Resources.icons8_вставить_32;
             this.Paste.Name = "Paste";
-            this.Paste.Size = new System.Drawing.Size(139, 22);
+            this.Paste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.Paste.Size = new System.Drawing.Size(189, 22);
             this.Paste.Text = "Вставить";
             this.Paste.Click += new System.EventHandler(this.PasteFiles);
             // 
@@ -696,7 +707,8 @@
             // 
             this.List1.Image = global::LightFileManager.Images.icons8_список_32;
             this.List1.Name = "List1";
-            this.List1.Size = new System.Drawing.Size(164, 22);
+            this.List1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.List1.Size = new System.Drawing.Size(218, 22);
             this.List1.Tag = "List";
             this.List1.Text = "Список";
             this.List1.Click += new System.EventHandler(this.ChangeViewMode);
@@ -705,7 +717,8 @@
             // 
             this.Details1.Image = global::LightFileManager.Images.icons8_детальный_вид_32;
             this.Details1.Name = "Details1";
-            this.Details1.Size = new System.Drawing.Size(164, 22);
+            this.Details1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F2)));
+            this.Details1.Size = new System.Drawing.Size(218, 22);
             this.Details1.Tag = "Details";
             this.Details1.Text = "Таблица";
             this.Details1.Click += new System.EventHandler(this.ChangeViewMode);
@@ -714,10 +727,26 @@
             // 
             this.LargeIcons1.Image = global::LightFileManager.Images.icons8_плитки_32;
             this.LargeIcons1.Name = "LargeIcons1";
-            this.LargeIcons1.Size = new System.Drawing.Size(164, 22);
+            this.LargeIcons1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F3)));
+            this.LargeIcons1.Size = new System.Drawing.Size(218, 22);
             this.LargeIcons1.Tag = "LargeIcon";
             this.LargeIcons1.Text = "Крупные значки";
             this.LargeIcons1.Click += new System.EventHandler(this.ChangeViewMode);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(186, 6);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(186, 6);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(186, 6);
             // 
             // MainForm
             // 
@@ -820,6 +849,9 @@
         private System.Windows.Forms.Panel pagepan;
         private System.Windows.Forms.ImageList imageList5;
         private System.Windows.Forms.ToolStripButton calcbtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
     }
 }
 
