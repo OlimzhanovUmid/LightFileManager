@@ -43,6 +43,7 @@ namespace LightFileManager
                 Build(root);
             }
             UpdateLabels();
+            tabHistory.Add("");
 
 
 
@@ -257,15 +258,12 @@ namespace LightFileManager
         List<string> tabHistory = new List<string>();
         private void Addtabpage_Click(object sender, EventArgs e)
         {
-            tabHistory.Add(dirpathtbx.Text);
             TabPage tabPage = new TabPage();
             foreach (Control control in tabstbctrl.SelectedTab.Controls)
             {
                 tabPage.Controls.Add(control);
             }
             tabstbctrl.TabPages.Add(tabPage);
-            dirpathtbx.Text = "C:\\";
-            ChangeDirectory(dirpathtbx.Text);
             tabstbctrl.SelectedIndex += 1;
         }
 
@@ -279,13 +277,12 @@ namespace LightFileManager
             int selectedTab = tabstbctrl.SelectedIndex-1;
             tabstbctrl.TabPages.Remove(tabstbctrl.SelectedTab);
             tabstbctrl.TabPages[selectedTab].Controls.AddRange(controls);
-            dirpathtbx.Text = tabHistory[selectedTab-1];
-            ChangeDirectory(dirpathtbx.Text);
             tabstbctrl.SelectedIndex = selectedTab;
         }
 
         private void tabstbctrl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tabHistory.Add(dirpathtbx.Text);
             Control[] controls = new Control[1];
             for (int i = 0; i < tabstbctrl.TabPages.Count; i++)
             {
@@ -298,13 +295,20 @@ namespace LightFileManager
                 }
             }
             tabstbctrl.SelectedTab.Controls.AddRange(controls);
-            //dirpathtbx.Text = tabHistory[tabstbctrl.SelectedIndex+1];
-            ChangeDirectory(dirpathtbx.Text);
         }
 
         private void dirpathtbx_DoubleClick(object sender, EventArgs e)
         {
             ChangeDirectory(dirpathtbx.Text);
+        }
+
+        private void tabctrlstrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (tabstbctrl.TabPages.Count == 1)
+                Deletetabpage.Enabled = false;
+            else
+                Deletetabpage.Enabled = true;
         }
     }
 }

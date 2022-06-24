@@ -93,6 +93,7 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList4 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList5 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.maincontainer)).BeginInit();
             this.maincontainer.Panel1.SuspendLayout();
             this.maincontainer.Panel2.SuspendLayout();
@@ -134,7 +135,7 @@
             this.tvFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvFiles.ForeColor = System.Drawing.SystemColors.WindowText;
             this.tvFiles.ImageIndex = 0;
-            this.tvFiles.ImageList = this.imageList1;
+            this.tvFiles.ImageList = this.imageList5;
             this.tvFiles.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.tvFiles.Location = new System.Drawing.Point(0, 0);
             this.tvFiles.Name = "tvFiles";
@@ -302,6 +303,7 @@
             this.Deletetabpage});
             this.tabctrlstrip.Name = "tabctrlstrip";
             this.tabctrlstrip.Size = new System.Drawing.Size(173, 48);
+            this.tabctrlstrip.Opening += new System.ComponentModel.CancelEventHandler(this.tabctrlstrip_Opening);
             // 
             // Addtabpage
             // 
@@ -675,6 +677,12 @@
             this.imageList4.ImageSize = new System.Drawing.Size(48, 48);
             this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // imageList5
+            // 
+            this.imageList5.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList5.ImageStream")));
+            this.imageList5.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList5.Images.SetKeyName(0, "79.ico");
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -773,6 +781,7 @@
         private System.Windows.Forms.ComboBox diskscmbx;
         private System.Windows.Forms.TextBox dirpathtbx;
         private System.Windows.Forms.Panel pagepan;
+        private System.Windows.Forms.ImageList imageList5;
     }
 }
 
