@@ -280,6 +280,19 @@ namespace LightFileManager
 
         private void tabstbctrl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Control[] controls = new Control[1];
+            for (int i = 0; i < tabstbctrl.TabPages.Count; i++)
+            {
+                if (tabstbctrl.TabPages[i].Controls.Count != 0)
+                {
+                    foreach (Control control in tabstbctrl.TabPages[i].Controls)
+                    {
+                        controls[0] = control;
+                    }
+                }
+            }
+            tabstbctrl.SelectedTab.Controls.AddRange(controls);
+            
         }
     }
 }
