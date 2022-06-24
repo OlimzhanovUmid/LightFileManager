@@ -143,6 +143,16 @@ namespace LightFileManager.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_папка_128 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-папка-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_плюс_windows_10_70 {
             get {
                 object obj = ResourceManager.GetObject("icons8-плюс-windows-10-70", resourceCulture);
@@ -196,6 +206,16 @@ namespace LightFileManager.Properties {
         internal static System.Drawing.Bitmap icons8_создать_новый_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-создать-новый-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_создать_новый_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-создать-новый-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

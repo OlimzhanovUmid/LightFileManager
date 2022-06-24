@@ -322,5 +322,11 @@ namespace LightFileManager
         {
             Process.Start("calc.exe");
         }
+
+        private void новоеОкноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainForm form = new MainForm();
+            form.Show();
+        }
     }
 }

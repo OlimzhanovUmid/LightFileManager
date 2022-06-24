@@ -32,7 +32,6 @@
             this.okbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.onlyreadingchbx = new System.Windows.Forms.CheckBox();
-            this.folderpbx = new System.Windows.Forms.PictureBox();
             this.ishiddenchbx = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.filesCountLabel = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.dirtypelb = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dirnametbx = new System.Windows.Forms.TextBox();
+            this.folderpbx = new System.Windows.Forms.PictureBox();
             this.infopan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.folderpbx)).BeginInit();
             this.SuspendLayout();
@@ -112,16 +112,6 @@
             this.onlyreadingchbx.TabIndex = 3;
             this.onlyreadingchbx.Text = "Только для чтения";
             this.onlyreadingchbx.UseVisualStyleBackColor = true;
-            // 
-            // folderpbx
-            // 
-            this.folderpbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.folderpbx.ErrorImage = null;
-            this.folderpbx.Location = new System.Drawing.Point(3, 63);
-            this.folderpbx.Name = "folderpbx";
-            this.folderpbx.Size = new System.Drawing.Size(128, 110);
-            this.folderpbx.TabIndex = 1;
-            this.folderpbx.TabStop = false;
             // 
             // ishiddenchbx
             // 
@@ -242,6 +232,17 @@
             this.dirnametbx.Name = "dirnametbx";
             this.dirnametbx.Size = new System.Drawing.Size(128, 20);
             this.dirnametbx.TabIndex = 0;
+            // 
+            // folderpbx
+            // 
+            this.folderpbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.folderpbx.ErrorImage = null;
+            this.folderpbx.Image = global::LightFileManager.Properties.Resources.icons8_папка_128;
+            this.folderpbx.Location = new System.Drawing.Point(3, 63);
+            this.folderpbx.Name = "folderpbx";
+            this.folderpbx.Size = new System.Drawing.Size(128, 128);
+            this.folderpbx.TabIndex = 1;
+            this.folderpbx.TabStop = false;
             // 
             // DirectoryInfoDialogBox
             // 

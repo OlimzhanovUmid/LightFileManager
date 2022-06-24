@@ -247,6 +247,7 @@
             // 
             // filepbx
             // 
+            this.filepbx.BackgroundImage = global::LightFileManager.Properties.Resources.icons8_создать_новый_96;
             this.filepbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.filepbx.ErrorImage = null;
             this.filepbx.Location = new System.Drawing.Point(3, 63);
