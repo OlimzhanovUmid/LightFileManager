@@ -310,5 +310,10 @@ namespace LightFileManager
             else
                 Deletetabpage.Enabled = true;
         }
+
+        private void calcbtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc.exe");
+        }
     }
 }
