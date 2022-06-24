@@ -33,10 +33,8 @@
             this.maincontainer = new System.Windows.Forms.SplitContainer();
             this.tvFiles = new System.Windows.Forms.TreeView();
             this.maincontextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.View = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.Create = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.imageList5 = new System.Windows.Forms.ImageList(this.components);
             this.tabstbctrl = new System.Windows.Forms.TabControl();
@@ -50,12 +48,14 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList4 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.propspan = new System.Windows.Forms.Panel();
             this.disksizelb = new System.Windows.Forms.Label();
             this.diskscmbx = new System.Windows.Forms.ComboBox();
             this.dirpathtbx = new System.Windows.Forms.TextBox();
+            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menumnstrp = new System.Windows.Forms.MenuStrip();
             this.Сommands = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewMode = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,8 +64,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.imageList4 = new System.Windows.Forms.ImageList(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -73,6 +71,7 @@
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.notepadbtn = new System.Windows.Forms.ToolStripButton();
             this.calcbtn = new System.Windows.Forms.ToolStripButton();
+            this.View = new System.Windows.Forms.ToolStripMenuItem();
             this.LargeIcon = new System.Windows.Forms.ToolStripMenuItem();
             this.List = new System.Windows.Forms.ToolStripMenuItem();
             this.Details = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +80,7 @@
             this.Copy = new System.Windows.Forms.ToolStripMenuItem();
             this.Cut = new System.Windows.Forms.ToolStripMenuItem();
             this.Paste = new System.Windows.Forms.ToolStripMenuItem();
+            this.Create = new System.Windows.Forms.ToolStripMenuItem();
             this.Folder = new System.Windows.Forms.ToolStripMenuItem();
             this.TxtFile = new System.Windows.Forms.ToolStripMenuItem();
             this.Info = new System.Windows.Forms.ToolStripMenuItem();
@@ -163,16 +163,6 @@
             this.maincontextmenu.Name = "contextMenuStrip1";
             this.maincontextmenu.Size = new System.Drawing.Size(140, 198);
             // 
-            // View
-            // 
-            this.View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LargeIcon,
-            this.List,
-            this.Details});
-            this.View.Name = "View";
-            this.View.Size = new System.Drawing.Size(139, 22);
-            this.View.Text = "Вид";
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -182,15 +172,6 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(136, 6);
-            // 
-            // Create
-            // 
-            this.Create.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Folder,
-            this.TxtFile});
-            this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(139, 22);
-            this.Create.Text = "Создать";
             // 
             // toolStripSeparator6
             // 
@@ -303,17 +284,19 @@
             // 
             this.columnHeader4.Text = "Дата создания";
             // 
-            // imageList3
+            // imageList4
             // 
-            this.imageList3.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imageList3.ImageSize = new System.Drawing.Size(48, 48);
-            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
+            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList4.Images.SetKeyName(0, "icons8-папка-96.png");
+            this.imageList4.Images.SetKeyName(1, "icons8-создать-новый-96.png");
+            this.imageList4.Images.SetKeyName(2, "icons8-создать-новый-96.png");
             // 
-            // imageList1
+            // imageList2
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "icons8-папка-32.png");
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "icons8-папка-32.png");
             // 
             // propspan
             // 
@@ -359,6 +342,18 @@
             this.dirpathtbx.Size = new System.Drawing.Size(515, 20);
             this.dirpathtbx.TabIndex = 1;
             this.dirpathtbx.DoubleClick += new System.EventHandler(this.dirpathtbx_DoubleClick);
+            // 
+            // imageList3
+            // 
+            this.imageList3.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList3.ImageSize = new System.Drawing.Size(48, 48);
+            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "icons8-папка-32.png");
             // 
             // menumnstrp
             // 
@@ -444,20 +439,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "icons8-папка-32.png");
-            // 
-            // imageList4
-            // 
-            this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
-            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList4.Images.SetKeyName(0, "icons8-папка-96.png");
-            this.imageList4.Images.SetKeyName(1, "icons8-создать-новый-96.png");
-            this.imageList4.Images.SetKeyName(2, "icons8-создать-новый-96.png");
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -528,6 +509,17 @@
             this.calcbtn.Text = "Калькулятор";
             this.calcbtn.Click += new System.EventHandler(this.calcbtn_Click);
             // 
+            // View
+            // 
+            this.View.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LargeIcon,
+            this.List,
+            this.Details});
+            this.View.Image = global::LightFileManager.Properties.Resources.icons8_средние_иконки_windows_10_70;
+            this.View.Name = "View";
+            this.View.Size = new System.Drawing.Size(139, 22);
+            this.View.Text = "Вид";
+            // 
             // LargeIcon
             // 
             this.LargeIcon.Image = global::LightFileManager.Images.icons8_плитки_32;
@@ -595,11 +587,21 @@
             this.Paste.Text = "Вставить";
             this.Paste.Click += new System.EventHandler(this.PasteFiles);
             // 
+            // Create
+            // 
+            this.Create.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Folder,
+            this.TxtFile});
+            this.Create.Image = global::LightFileManager.Properties.Resources.icons8_плюс_windows_10_70;
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(139, 22);
+            this.Create.Text = "Создать";
+            // 
             // Folder
             // 
             this.Folder.Image = global::LightFileManager.Properties.Resources.icons8_добавить_папку_32;
             this.Folder.Name = "Folder";
-            this.Folder.Size = new System.Drawing.Size(164, 22);
+            this.Folder.Size = new System.Drawing.Size(180, 22);
             this.Folder.Text = "Папку";
             this.Folder.Click += new System.EventHandler(this.CreateFolder);
             // 
@@ -607,7 +609,7 @@
             // 
             this.TxtFile.Image = global::LightFileManager.Properties.Resources.icons8_создать_новый_32;
             this.TxtFile.Name = "TxtFile";
-            this.TxtFile.Size = new System.Drawing.Size(164, 22);
+            this.TxtFile.Size = new System.Drawing.Size(180, 22);
             this.TxtFile.Text = "Текстовый файл";
             this.TxtFile.DoubleClick += new System.EventHandler(this.CreateFile);
             // 
@@ -727,6 +729,7 @@
             this.Controls.Add(this.maintoolstrip);
             this.Controls.Add(this.maincontainer);
             this.Controls.Add(this.menumnstrp);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menumnstrp;
             this.Name = "MainForm";
             this.Text = "Main";

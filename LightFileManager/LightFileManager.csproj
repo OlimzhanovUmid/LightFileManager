@@ -159,6 +159,8 @@
     <None Include="Resources\icons8-добавить-папку-32.png" />
     <None Include="Resources\icons8-создать-новый-32.png" />
     <None Include="Resources\icons8-посмотреть-детали-32.png" />
+    <None Include="Resources\icons8-средние-иконки-windows-10-70.png" />
+    <None Include="Resources\icons8-плюс-windows-10-70.png" />
     <Content Include="Resources\info.png" />
     <Content Include="Resources\largeIcons.png" />
     <Content Include="Resources\list.png" />

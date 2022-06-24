@@ -250,7 +250,9 @@ namespace LightFileManager
 
         private void tvFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-
+            string disk = e.Node.Tag as string;
+            diskscmbx.Text = disk.Substring(0, 3);
+            UpdateLabels();
             Build(e.Node);
             dirpathtbx.Text = e.Node.Tag as string;
             ChangeDirectory(dirpathtbx.Text);
